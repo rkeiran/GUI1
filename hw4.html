@@ -1,0 +1,100 @@
+# GUI1
+<!DOCTYPE html>
+<!--Ryan Keiran
+    ryan_keiran@student.uml.edu
+    Student, comp.4610 GUI Programming I
+    11/13
+    Offers a form to enter 5 values of price and MPG and when submit is pressed creates a table of the cross-section of all the fiels-->
+<html>
+ <head>
+  <title> Price Comparison Chart </title>
+  <link rel="stylesheet" href="css/hw4.css">
+ </head>
+ <body>
+  <h1> Price Comparison Chart </h1>
+  <h2> Enter your prices and MPG in the "price x" and "MPG x" fields.<br> The "Input Price x" and "Input MPG x" fields will confirm the values were read properly when submit is pressed.</h2>
+  <form id="form">
+   <br>Price 1 <input type="number" step="any" id="price1">
+   MPG 1 <input type="number" step="any" id="MPG1"><br>
+   <br>Price 2 <input type="number" step="any" id="price2">
+   MPG 2 <input type="number" step="any" id="MPG2"><br>
+   <br>Price 3 <input type="number" step="any" id="price3">
+   MPG 3 <input type="number" step="any" id="MPG3"><br>
+   <br>Price 4 <input type="number" step="any" id="price4">
+   MPG 4 <input type="number" step="any" id="MPG4"><br>
+   <br>Price 5 <input type="number" step="any" id="price5">
+   MPG 5 <input type="number" step="any" id="MPG5"><br>
+   <br>Input Price 1 <input type="number" step="any" id="iprice1">
+   Input MPG 1 <input type="number" step="any" id="iMPG1"><br>
+   <br>Input Price 2 <input type="number" step="any" id="iprice2">
+   Input MPG 2 <input type="number" step="any" id="iMPG2"><br>
+   <br>Input Price 3 <input type="number" step="any" id="iprice3">
+   Input MPG 3 <input type="number" step="any" id="iMPG3"><br>
+   <br>Input Price 4 <input type="number" step="any" id="iprice4">
+   Input MPG 4 <input type="number" step="any" id="iMPG4"><br>
+   <br>Input Price 5 <input type="number" step="any" id="iprice5">
+   Input MPG 5 <input type="number" step="any" id="iMPG5"><br>
+  </form>
+  <button onclick="inputs()">Submit</button>
+  <button onclick="reset()">Reset</button>
+  <script> function reset() {
+        document.getElementById("form").reset();
+
+   } </script>
+  <script> function inputs(){
+        var a,b,c,d,e,f,g,h,i,j;
+        a = Number(document.getElementById("price1").value);
+        b = Number(document.getElementById("MPG1").value);
+        c = Number(document.getElementById("price2").value);
+        d = Number(document.getElementById("MPG2").value);
+        e = Number(document.getElementById("price3").value);
+        f = Number(document.getElementById("MPG3").value);
+        g = Number(document.getElementById("price4").value);
+        h = Number(document.getElementById("MPG4").value);
+        i = Number(document.getElementById("price5").value);
+        j = Number(document.getElementById("MPG5").value);
+        document.getElementById("iprice1").value = a;
+        document.getElementById("iMPG1").value = b;
+        document.getElementById("iprice2").value = c;
+        document.getElementById("iMPG2").value = d;
+        document.getElementById("iprice3").value = e;
+        document.getElementById("iMPG3").value = f;
+        document.getElementById("iprice4").value = g;
+        document.getElementById("iMPG4").value = h;
+        document.getElementById("iprice5").value = i;
+        document.getElementById("iMPG5").value = j;
+        if (!document.getElementsByTagName) return;
+        tabBody=document.getElementsByTagName("tbody").item(0);
+        row1=document.createElement("tr");
+        cell1=document.createElement("td");
+        textnode1=document.createTextNode("Price/MPG");
+        cell1.appendChild(textnode1);
+        row1.appendChild(cell1);
+        for(i = 0; i < 5; i++){
+                cell=document.createElement("td");
+                textnode=document.createTextNode("Price"+(i+1));
+                cell.appendChild(textnode);
+                row1.appendChild(cell);}
+        tabBody.appendChild(row1);
+        for(i = 0; i < 5; i++){
+                row=document.createElement("tr");
+                for (j = 0; j < 6; j++){
+                        cell=document.createElement("td");
+ if (j == 0){
+                                textnode=document.createTextNode("MPG"+(i+1));
+                                cell.appendChild(textnode);
+                                row.appendChild(cell);}
+                        else{
+                                k = "price"+String(j);
+                                m = "MPG"+String((i+1));
+                                textnode=document.createTextNode(document.getElementById(k).value + "/" + document.getElementById(m).value);
+                                cell.appendChild(textnode);
+                                row.appendChild(cell);}
+                }
+                tabBody.appendChild(row);}
+        }</script>
+  <table>
+    <tbody></tbody>
+  </table>
+ </body>
+</html>
