@@ -1,0 +1,21 @@
+/*Ryan Keiran
+    ryan_keiran@student.uml.edu
+    Student, comp.4610 GUI Programming I
+    11/13
+    Styles the page with an orange background and improves readability*/
+
+body {background-color:darkorange;
+}
+table {border: 2px solid black;
+       border-collapse: collapse;
+       position: absolute;
+       top: 200px;
+       right: 70px;
+}
+tr,th,td{border: 3px solid black;
+       border-collapse: collapse;
+       padding: 15px;
+       font-weight: bold;
+}
+form {font-weight: bold;
+      color: purple;}
