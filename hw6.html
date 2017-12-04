@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--HW4 file slightly modified for HW5-->
+<html>
+ <head>
+  <title> Price Comparison Chart </title>
+  <link rel="stylesheet" href="css/hw5.css">
+ </head>
+ <body>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
+  <script type="text/javascript" src="js/jquery.validate.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="test.js"></script>
+  <script type="text/javascript" src="hw6ix.js"></script> 
+  <h1> Price Comparison Chart </h1>
+  <h2> Enter your prices and MPG in the "Price x" and "MPG x" fields.<br> The "Input Price x" and "Input MPG x" fields will confirm the values were read properly when submit is pressed.</h2>
+  <form id="form1" method="post" action="">
+    <input type="text" id="price1">Price 1</input><br>
+    <div id = "slider1"></div>
+    <br><input type="text" id="MPG1">MPG 1</input><br><br>
+    <div id = "slider2"></div>
+  <button onclick="inputs()">Submit</button>
+  <button onclick="reset()">Reset</button>
+  <script> function reset() {
+        document.getElementById("form").reset();	
+   } </script>
+  <script> function inputs(){
+	var a,b,c,d,e,f,g,h,i,j;
+	a = Number(document.getElementById("price1").value);
+	b = Number(document.getElementById("MPG1").value);
+        c = Number(document.getElementById("price2").value);
+        d = Number(document.getElementById("MPG2").value);
+        e = Number(document.getElementById("price3").value);
+        f = Number(document.getElementById("MPG3").value);
+        g = Number(document.getElementById("price4").value);
+        h = Number(document.getElementById("MPG4").value);
+        i = Number(document.getElementById("price5").value);
+        j = Number(document.getElementById("MPG5").value);
+	document.getElementById("iprice1").value = a;
+        document.getElementById("iMPG1").value = b;
+        document.getElementById("iprice2").value = c;
+        document.getElementById("iMPG2").value = d;
+        document.getElementById("iprice3").value = e;
+        document.getElementById("iMPG3").value = f;
+        document.getElementById("iprice4").value = g;
+        document.getElementById("iMPG4").value = h;
+        document.getElementById("iprice5").value = i;
+        document.getElementById("iMPG5").value = j;
+	if (!document.getElementsByTagName) return;
+        tabBody=document.getElementsByTagName("tbody").item(0);
+        row1=document.createElement("tr");
+	cell1=document.createElement("td");
+	textnode1=document.createTextNode("Price/MPG");
+	cell1.appendChild(textnode1);
+	row1.appendChild(cell1);
+	for(i = 0; i < 5; i++){
+		cell=document.createElement("td");
+		textnode=document.createTextNode("Price"+(i+1));
+		cell.appendChild(textnode);
+		row1.appendChild(cell);}
+        tabBody.appendChild(row1);
+	for(i = 0; i < 5; i++){
+		row=document.createElement("tr");
+		for (j = 0; j < 6; j++){
+			cell=document.createElement("td");
+			if (j == 0){
+                		textnode=document.createTextNode("MPG"+(i+1));
+                		cell.appendChild(textnode);
+                		row.appendChild(cell);}
+                        else{
+				k = "price"+String(j);
+				m = "MPG"+String((i+1));
+			        textnode=document.createTextNode(document.getElementById(k).value + "/" + document.getElementById(m).value);
+                                cell.appendChild(textnode);
+                                row.appendChild(cell);}
+		}
+		tabBody.appendChild(row);}
+	}</script>
+  <table>
+    <tbody></tbody>
+  </table>
+ </body>
+</html>
