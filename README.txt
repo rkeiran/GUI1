@@ -1,0 +1,1 @@
+In terms of work split up, Ryan did the upload and deletion, as well as making each photo able to be edited while Chris did the editing processes and sharing abilities. Both of us shared CSS responsibilities, although Chris did the larger portion of it. 

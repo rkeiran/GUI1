@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--Ryan Keiran & Chris Keo
+        Ryan_Keiran@student.uml.edu and christopher_keo@student.uml.edu
+        Computer science department, UMass Lowell
+        Comp 4610, GUI I
+        Created: 12/5/17
+        Updated: 12/13/17
+
+	This is our edit page. Pictures can be rotated, and the size of them can be changed-->
+
+ <html>
+	 <head>
+		 <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		 <link rel="stylesheet" href="css/edit.css">
+		 <ul>
+			  <a href="final.php">BACK</a></li>
+		 </ul>
+							                     
+	 </head>
+	 <body>	
+		<?php
+			
+			if ( array_key_exists ('edit_file', $_POST)){
+       				$filename = $_POST['edit_file'];
+       				if ( file_exists ( $filename ) ) {
+           				 echo '<img src="'.$filename.'" alt="j" height="300" width="300" id="image"/>';
+       				}
+  			}
+		?>
+		 <div id="rotating" class="floating-box">
+		 <label>Rotate Image</label>
+		 <input type="button" class="btnRotate" value="90" onClick="rotateImage(this.value);" />
+		 <input type="button" class="btnRotate" value="-90" onClick="rotateImage(this.value);" />
+		 <input type="button" class="btnRotate" value="180" onClick="rotateImage(this.value);" />
+		 <input type="button" class="btnRotate" value="360" onClick="rotateImage(this.value);" />
+	 </div>
+
+	 <div id ="sizing" class="floating-box">		
+		Height	<input type="number" id="height"> <br>
+		Width	<input type="number" id="width">  <br>
+		<button onclick="option1()" class="button" id="resize">RESIZE</button>
+	</div>
+
+	 </body>
+	 <script>
+	function option1(){
+	$(document).ready(function(){
+	$("button").click(function(){
+		$("img").attr({width: Number(document.getElementById("width").value)});
+		$("img").attr({height: Number(document.getElementById("height").value)});
+	});
+});
+}
+	 </script>
+	<script>
+function rotateImage(degree){
+	$('#image').animate({  transform: degree },{
+		 step: function(now,fx) {
+			 $(this).css({
+				 '-webkit-transform':'rotate('+now+'deg)', 
+				 '-moz-transform':'rotate('+now+'deg)',
+				 'transform':'rotate('+now+'deg)'
+			 });
+		 }
+	});
+}
+	</script>
+
+ </html>
+
+
+
